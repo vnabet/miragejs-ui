@@ -1,0 +1,42 @@
+{
+  "name": "miragejs-ui",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "miragejsui.js",
+  "types": "miragejsui.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vnabet/miragejs-ui"
+  },
+  "keywords": [
+    "mirage",
+    "miragejs",
+    "api",
+    "mock",
+    "mocking",
+    "ui"
+  ],
+  "author": "Vincent Nabet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vnabet/miragejs-ui/issues"
+  },
+  "homepage": "https://github.com/vnabet/miragejs-ui#readme",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.1.0",
+    "@tsconfig/svelte": "^3.0.0",
+    "miragejs": "^0.1.46",
+    "svelte": "^3.52.0",
+    "svelte-check": "^2.9.2",
+    "svelte-preprocess": "^4.10.7",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  }
+}
