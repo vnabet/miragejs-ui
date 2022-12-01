@@ -3,14 +3,19 @@
   import MainButton from './components/MainButton.svelte';
   import Toggle from './components/Toggle.svelte';
 
-  import {opened} from './stores/MirageUI.store';
+  import {opened, started} from './stores/MirageUI.store';
+
+  function startstop(ev:CustomEvent) {
+    started.set(ev.detail);
+  }
+
 </script>
 
 <div class="mirage">
   <div class:opened={$opened}>
-    <Toggle></Toggle>
+    <Toggle checked={$started} on:toggle="{startstop}"></Toggle>
   </div>
-  <MainButton></MainButton>
+  <MainButton started={$started}></MainButton>
 </div>
 
 <style>
