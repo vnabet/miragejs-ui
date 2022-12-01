@@ -3,14 +3,11 @@
   import MainButton from './components/MainButton.svelte';
   import Toggle from './components/Toggle.svelte';
 
-  let opened:boolean = false;
-  function mainButtonHandler():void {
-    opened = !opened;
-  }
+  import {opened} from './stores/MirageUI.store';
 </script>
 
 <div class="mirage">
-  <div class:opened={opened}>
+  <div class:opened={$opened}>
     <Toggle></Toggle>
   </div>
   <MainButton></MainButton>
