@@ -12,7 +12,9 @@
   }
 </script>
 
+
 <input type="checkbox" on:click={checkboxHandler} checked={checked}>
+
 
 <style>
   input[type=checkbox] {

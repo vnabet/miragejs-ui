@@ -17,8 +17,10 @@
 
 <div class="mirage">
   <div class:opened={$opened}>
-    <Toggle checked={$started} on:toggle="{startstop}"></Toggle>
-    Vincent
+    <div style="display: flex;align-items:center; gap:10px">
+      <label>Started</label>
+      <Toggle checked={$started} on:toggle="{startstop}"></Toggle>
+    </div>
   </div>
   <MainButton started={$started}></MainButton>
 </div>
