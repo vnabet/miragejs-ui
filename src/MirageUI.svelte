@@ -9,6 +9,10 @@
     started.set(ev.detail);
   }
 
+
+  document.addEventListener('keydown', (event:KeyboardEvent) => {
+    if(event.key === 'Escape' && $opened === true) opened.set(false);
+  })
 </script>
 
 <div class="mirage">
