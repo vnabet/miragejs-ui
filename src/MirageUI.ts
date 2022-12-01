@@ -7,9 +7,11 @@ export default class MirageUI {
   private static _app:MirageUIComponent;
 
   private constructor(server?:Server) {
-    MirageUI._app = new MirageUIComponent({
-      target: document.body
-    });
+    if(!MirageUI._app) {
+      MirageUI._app = new MirageUIComponent({
+        target: document.body
+      });
+    }
   }
 
   public static Init(server?:Server):MirageUI {
