@@ -19,7 +19,7 @@
   margin: 0;
   padding: 0;
   position: relative;
-  display: block;
+  display: inline-block;
   appearance: none;
   outline: none;
   width: 50px;
