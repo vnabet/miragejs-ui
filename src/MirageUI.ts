@@ -1,30 +1,24 @@
 import type {Server} from 'miragejs';
 import MirageUIComponent from './MirageUI.svelte';
+import {mirageUIService} from './services/MirageUI.service';
 
-export default class MirageUI {
-  private static _instance:MirageUI;
-  
-  private static _app:MirageUIComponent;
+export interface IMirageUI {
+  init(serverInitializer:()=>Server):void;
+}
 
-  serverInitializer:()=>Server;
-  server:Server;
+class MirageUI implements IMirageUI {
 
-  private constructor(serverInitializer?:()=>Server) {
-    if(!MirageUI._app) {
-      MirageUI._app = new MirageUIComponent({
-        target: document.body
-      });
+  private _app:MirageUIComponent;
 
-      this.serverInitializer = serverInitializer;
-
-      this.server = serverInitializer();
-    }
+  constructor(serverInitializer?:()=>Server) {
+    this._app = new MirageUIComponent({
+      target: document.body
+    });
   }
 
-  public static Init(serverInitializer?:()=>Server):MirageUI {
-    if(!MirageUI._instance) {
-      MirageUI._instance = new MirageUI(serverInitializer);
-    }
-    return MirageUI._instance;
+  public init(serverInitializer:()=>Server):void {
+    mirageUIService.startServer(serverInitializer);
   }
 }
+
+export const mirageUI:IMirageUI = new MirageUI();
