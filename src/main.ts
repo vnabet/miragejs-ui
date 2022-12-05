@@ -2,7 +2,7 @@ import type { IPet } from './models/IPet';
 import './app.css'
 import App from './App.svelte'
 
-import MirageUI from './MirageUI';
+import {mirageUI} from './MirageUI';
 import {createServer, Server} from "miragejs";
 
 
@@ -25,13 +25,6 @@ function serverMirage():Server {
     }
   })
 }
-
-//serverMirage();
-
-
-
-
-console.log(MirageUI.Init(serverMirage))
 
 const app = new App({
   target: document.getElementById('app')
