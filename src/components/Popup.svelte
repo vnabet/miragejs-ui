@@ -2,9 +2,10 @@
   import Toggle from './Toggle.svelte';
 
   import {opened, started} from '../stores/MirageUI.store';
+  import {mirageUIService} from '../services/MirageUI.service';
 
   function startstop(ev:CustomEvent) {
-    started.set(ev.detail);
+    ev.detail?mirageUIService.startServer():mirageUIService.stopServer();
   }
 </script>
 

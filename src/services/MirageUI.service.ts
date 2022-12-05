@@ -14,9 +14,13 @@ class MirageUIService implements IMirageUIService {
   public startServer(serverInitializer?:()=>Server) {
     this._serverInitializer = serverInitializer || this._serverInitializer;
 
-    this._server = this._server || this._serverInitializer();
+    try {
+      this._server = this._server || this._serverInitializer();
+      started.set(true);
+    } catch(e) {
+      started.set(false);
+    }
 
-    started.set(true);
   }
 
   public stopServer() {
