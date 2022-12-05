@@ -6,17 +6,24 @@ export default class MirageUI {
   
   private static _app:MirageUIComponent;
 
-  private constructor(server?:Server) {
+  serverInitializer:()=>Server;
+  server:Server;
+
+  private constructor(serverInitializer?:()=>Server) {
     if(!MirageUI._app) {
       MirageUI._app = new MirageUIComponent({
         target: document.body
       });
+
+      this.serverInitializer = serverInitializer;
+
+      this.server = serverInitializer();
     }
   }
 
-  public static Init(server?:Server):MirageUI {
+  public static Init(serverInitializer?:()=>Server):MirageUI {
     if(!MirageUI._instance) {
-      MirageUI._instance = new MirageUI(server);
+      MirageUI._instance = new MirageUI(serverInitializer);
     }
     return MirageUI._instance;
   }
