@@ -22,9 +22,12 @@
     min-height: 100vh;
   }
 
-  .mirage {
+  :global(.mirage, .mirage *) {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
+  }
+
+  .mirage {
     box-sizing: border-box;
     display: block;
     position: fixed;

@@ -1,12 +1,13 @@
 <script lang="ts">
   import Toggle from './Toggle.svelte';
+  import Button from './Button.svelte';
 
   import {opened, started, serverError} from '../stores/MirageUI.store';
   import {mirageUIService} from '../services/MirageUI.service';
 
-  // function startstop(ev:CustomEvent) {
-  //   ev.detail?mirageUIService.startServer():mirageUIService.stopServer();
-  // }
+  function dumpDB() {
+    mirageUIService.dump();
+  }
 </script>
 
 <div class:opened={$opened} class="popup">
@@ -18,6 +19,10 @@
       <div style="display: flex;align-items:center; gap:10px">
         <label>Started</label>
         <Toggle bind:checked={$started}></Toggle>
+      </div>
+
+      <div>
+        <Button label="db dump" on:click={dumpDB} green></Button>
       </div>
     {/if}
   </div>
@@ -56,6 +61,9 @@
 
   .content {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .error {

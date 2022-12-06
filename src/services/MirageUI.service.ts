@@ -6,6 +6,7 @@ export interface IMirageUIService {
   //startServer(serverInitializer?:()=>Server);
   //stopServer();
   init(serverInitializer:()=>Server);
+  dump();
 }
 
 class MirageUIService implements IMirageUIService {
@@ -31,6 +32,10 @@ class MirageUIService implements IMirageUIService {
     this._serverInitializer = serverInitializer;
     serverError.set('')
     started.set(true);
+  }
+
+  public dump() {
+    if(this._server) console.log(this._server.db.dump());
   }
 
   private _startServer() {
