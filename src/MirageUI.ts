@@ -1,3 +1,4 @@
+import { started } from './stores/MirageUI.store';
 import type {Server} from 'miragejs';
 import MirageUIComponent from './MirageUI.svelte';
 import {mirageUIService} from './services/MirageUI.service';
@@ -17,7 +18,7 @@ class MirageUI implements IMirageUI {
   }
 
   public init(serverInitializer:()=>Server):void {
-    mirageUIService.startServer(serverInitializer);
+    mirageUIService.init(serverInitializer);
   }
 }
 

@@ -1,21 +1,25 @@
 <script lang="ts">
   import Toggle from './Toggle.svelte';
 
-  import {opened, started} from '../stores/MirageUI.store';
+  import {opened, started, serverError} from '../stores/MirageUI.store';
   import {mirageUIService} from '../services/MirageUI.service';
 
-  function startstop(ev:CustomEvent) {
-    ev.detail?mirageUIService.startServer():mirageUIService.stopServer();
-  }
+  // function startstop(ev:CustomEvent) {
+  //   ev.detail?mirageUIService.startServer():mirageUIService.stopServer();
+  // }
 </script>
 
 <div class:opened={$opened} class="popup">
   <div class="header">MirageUI</div>
   <div class="content">
-    <div style="display: flex;align-items:center; gap:10px">
-      <label>Started</label>
-      <Toggle checked={$started} on:toggle="{startstop}"></Toggle>
-    </div>
+    {#if $serverError}
+      <p class="error">{$serverError}</p>
+    {:else} 
+      <div style="display: flex;align-items:center; gap:10px">
+        <label>Started</label>
+        <Toggle bind:checked={$started}></Toggle>
+      </div>
+    {/if}
   </div>
 </div>
 
@@ -52,5 +56,9 @@
 
   .content {
     padding: 10px;
+  }
+
+  .error {
+    color: rgb(199,5,59);
   }
 </style>

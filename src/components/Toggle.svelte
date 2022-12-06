@@ -2,18 +2,17 @@
 
   import {createEventDispatcher} from 'svelte';
 
-  export let checked:boolean = false;
+  export let checked:any;// = false;
 
   const dispatch = createEventDispatcher();
 
-  function checkboxHandler(ev) {
-    dispatch('toggle', ev.currentTarget.checked);
+  // function checkboxHandler(ev) {
+  //   dispatch('toggle', ev.currentTarget.checked);
 
-  }
+  // }
 </script>
 
-
-<input type="checkbox" on:click={checkboxHandler} checked={checked}>
+<input type="checkbox" bind:checked={checked}>
 
 
 <style>

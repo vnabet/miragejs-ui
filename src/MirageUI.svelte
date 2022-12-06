@@ -3,7 +3,7 @@
   import MainButton from './components/MainButton.svelte';
   import Popup from './components/Popup.svelte';
 
-  import {opened, started} from './stores/MirageUI.store';
+  import {opened} from './stores/MirageUI.store';
 
   document.addEventListener('keydown', (event:KeyboardEvent) => {
     if(event.key === 'Escape' && $opened === true) opened.set(false);
@@ -12,7 +12,7 @@
 
 <div class="mirage">
   <Popup></Popup>
-  <MainButton started={$started}></MainButton>
+  <MainButton></MainButton>
 </div>
 
 <style>

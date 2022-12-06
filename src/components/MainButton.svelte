@@ -1,8 +1,6 @@
 <script lang="ts">
 
-  import {opened} from '../stores/MirageUI.store';
-
-  export let started:boolean = false;
+  import {opened, serverError, started} from '../stores/MirageUI.store';
 
   //let opened:boolean = false;
   function mainButtonHandler():void {
@@ -13,7 +11,7 @@
 </script>
 
 
-<button class:opened={$opened} class:stopped={!started} on:click={mainButtonHandler}>
+<button class:opened={$opened} class:stopped={!$started && !$serverError} class:disabled={$serverError} on:click={mainButtonHandler}>
   <svg style="stroke-width:1.5;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100" height="100" viewBox="0 0 100 100" xml:space="preserve">
     <g transform="matrix(0.96 0 0 0.96 50 61.83)"  >
     <path style="stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: evenodd; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-37.36, -45.96)" d="M -2.84217094e-14 45.956 L 74.724 45.956" stroke-linecap="round" />
@@ -77,6 +75,10 @@ button.opened {
 
 button.stopped {
   background: linear-gradient(328deg, rgba(2,0,36,1) 0%, rgba(199,5,59,1) 0%, rgba(125,21,43,1) 100%);
+}
+
+button.disabled {
+  background: grey;
 }
 
 button svg {
