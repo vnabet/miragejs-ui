@@ -2,7 +2,8 @@
 
   import {createEventDispatcher} from 'svelte';
 
-  export let checked:any;// = false;
+  export let checked:boolean = false;// = false;
+  export let label:string = '';// = false;
 
   const dispatch = createEventDispatcher();
 
@@ -12,10 +13,20 @@
   // }
 </script>
 
-<input type="checkbox" bind:checked={checked}>
+<div class="toggle">
+  <span>{label}</span>
+  <input type="checkbox" bind:checked={checked}>
+</div>
 
 
 <style>
+  .toggle {
+    display: flex; 
+    align-items:center;
+    gap:10px;
+    justify-content:space-between;
+    width: 100%;
+  }
   input[type=checkbox] {
   margin: 0;
   padding: 0;

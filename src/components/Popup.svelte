@@ -16,9 +16,8 @@
     {#if $serverError}
       <p class="error">{$serverError}</p>
     {:else} 
-      <div style="display: flex;align-items:center; gap:10px">
-        <label>Started</label>
-        <Toggle bind:checked={$started}></Toggle>
+      <div>
+        <Toggle bind:checked={$started} label="Server started"></Toggle>
       </div>
 
       <div>
@@ -41,6 +40,7 @@
     transition-duration: .5s;
     transform: translateX(1000px) ;
     opacity: 0;
+    position: relative;
   }
 
   .popup.opened {
