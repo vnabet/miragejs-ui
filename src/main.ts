@@ -3,7 +3,7 @@ import './app.css'
 import App from './App.svelte'
 
 import {mirageUI} from './MirageUI';
-import {mirageJSServer} from './MirageJS.server';
+import {mirageJSServer} from './mocks/MirageJS.server';
 
 
 mirageUI.init(mirageJSServer)
